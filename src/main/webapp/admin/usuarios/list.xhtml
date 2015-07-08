@@ -16,70 +16,19 @@
 
 
         <div class="Container100">
-
-<!--            <div class="ContainerIndent">
-                 First container 
-                <div class="Container25 Responsive">
-                    <div class="ContainerIndent">
-                        <p:panel>
-                            <i class="icon-user Fs50 Wid25 Fleft hardblue" />
-                            <div class="Fs24 Fright MarTop10 leaden Wid70">
-                                <span class="hardblue">Walter White</span>, Welcome
-                            </div>
-                            <div class="Fs12 Fright leaden Wid70">
-                                You have <span class="red">3 unread messages </span>
-                            </div>
-                            <div class="Fs12 Fright leaden Wid70">
-                                and <span class="red"> 32 tasks</span> !
-                            </div>
-
-                            <div class="EmptyBox10"></div>
-                            <p:separator></p:separator>
-                            <div class="EmptyBox10"></div>
-                        </p:panel>
-                    </div>
-                </div>
-
-                <div class="Container25 Responsive">
-                    <div class="ContainerIndent">
-                        <p:panel>
-                            <div class="Container100 Responsive Fs20">
-                                <i class="icon-chart-bar"></i> Hello World!
-                            </div>
-
-                        </p:panel>
-                    </div>
-
-                </div>
-
-
-                <div class="Container25 Responsive">
-                    <div class="ContainerIndent">
-                        <p:panel></p:panel>
-                    </div>
-                </div>
-
-
-                <div class="Container25 Responsive">
-                    <div class="ContainerIndent">
-                        <p:panel></p:panel>
-                    </div>
-                </div>
-
-            </div>-->
             <!--  second row -->
             <div class="ContainerIndent">
 
                 <div class="Container100 Responsive">
 
                     <p:panel>
-                        <div class="Container100 Responsive Fs20">
+                        <div class="Container100 Responsive Fs20 hardblue">
                             <i class="icon-table"></i> Usuarios Activos
                         </div>
                         <div class="EmptyBox10" />
                         <!-- Users List -->
 
-                        <h:form id="whitelistForm">
+                        <h:form id="userListForm">
                             <p:dataTable id="datatable" var="current" 
                                          value="#{usuariosController.items}" paginator="true" rows="5"
                                          rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"

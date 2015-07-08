@@ -4,10 +4,11 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:ps="http://primefaces.org/sentinel"
     xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
     xmlns:p="http://primefaces.org/ui">
 
     <h:form> 
-        <div id="layout-menubar" class="Unselectable fontRegular">
+        <div id="layout-menubar" class="Unselectable fontRegular" style="height: 800px!important" >
             <div class="layout-menubarinner-box" id="buttonArea">
                 <a href="#" id="layout-menubar-resize" class="BordRad3" title="Menu Resize"><i class="icon-menu-1"></i></a>
                 <a href="#" id="layout-menubar-resize2" class="BordRad3" title="Open Menu"><i class="icon-menu-1"></i></a>
@@ -23,23 +24,27 @@
                 <p:menuitem id="sm_dashboard" value=" Dashboard" icon="icon-home-outline"  containerStyleClass="layout-menubar-active"/>
 
                 <p:submenu id="usuarios" label=" Usuarios" icon="icon-users">
-                   
-                        <p:menuitem id="users_lnk1" value="Nuevo" icon="icon-user-add" />
-                        <p:menuitem id="users_lnk2" value="Editar" icon="icon-edit" />
-                        <p:menuitem id="users_lnk3" value="Listar" icon="icon-th-list-1" />
-                        <p:menuitem id="users_lnk4" value="Eliminar" icon="icon-user-delete" />
-                   
+
+                    <p:menuitem id="users_lnk1" value="Nuevo" icon="icon-user-add"
+                                styleClass="#{fn:startsWith(request.pathInfo,'/admin/usuarios/new')?'active':'' } " 
+                                action="#{usuariosController.goUsuarioCreate()}" />
+                    <p:menuitem id="users_lnk2" value="Editar" icon="icon-edit"/>
+                    <p:menuitem id="users_lnk3" value="Listar" icon="icon-th-list-1" 
+                                styleClass="#{fn:startsWith(request.pathInfo,'/admin/usuarios/list')?'active':'' } " 
+                                action="#{usuariosController.goUsuariosList()}" />
+                    <p:menuitem id="users_lnk4" value="Eliminar" icon="icon-user-delete" />
+
                 </p:submenu>
 
                 <p:submenu id="ventas" label=" Ventas" icon="icon-dollar">
                     <p:menuitem id="ventas_lnk1" value="Nuevo" icon="icon-user-add" />
                 </p:submenu>
-                
-                  <p:submenu id="productos" label=" Productos" icon="icon-food">
+
+                <p:submenu id="productos" label=" Productos" icon="icon-food">
                     <p:menuitem id="prod_lnk1" value="Nuevo" icon="icon-user-add" />
                 </p:submenu>
-                
-                
+
+
             </ps:menu>
 
         </div>

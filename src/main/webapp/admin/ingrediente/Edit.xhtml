@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IngredienteEditDlg" widgetVar="IngredienteEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditIngredienteTitle}">
+            <h:form id="IngredienteEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ingredienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditIngredienteLabel_idIngrediente}" for="idIngrediente" />
+                        <p:inputText id="idIngrediente" value="#{ingredienteController.selected.idIngrediente}" title="#{bundle.EditIngredienteTitle_idIngrediente}" required="true" requiredMessage="#{bundle.EditIngredienteRequiredMessage_idIngrediente}"/>
+                        <p:outputLabel value="#{bundle.EditIngredienteLabel_tipo}" for="tipo" />
+                        <p:inputText id="tipo" value="#{ingredienteController.selected.tipo}" title="#{bundle.EditIngredienteTitle_tipo}" />
+                        <p:outputLabel value="#{bundle.EditIngredienteLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{ingredienteController.selected.nombre}" title="#{bundle.EditIngredienteTitle_nombre}" />
+                        <p:outputLabel value="#{bundle.EditIngredienteLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{ingredienteController.selected.cantidad}" title="#{bundle.EditIngredienteTitle_cantidad}" />
+                        <p:outputLabel value="#{bundle.EditIngredienteLabel_disponibilidad}" for="disponibilidad" />
+                        <p:inputText id="disponibilidad" value="#{ingredienteController.selected.disponibilidad}" title="#{bundle.EditIngredienteTitle_disponibilidad}" />
+                        <p:outputLabel value="#{bundle.EditIngredienteLabel_idProducto}" for="idProducto" />
+                        <p:selectOneMenu id="idProducto" value="#{ingredienteController.selected.idProducto}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{productoController.itemsAvailableSelectOne}"
+                                           var="idProductoItem"
+                                           itemValue="#{idProductoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ingredienteController.update}" value="#{bundle.Save}" update="display,:IngredienteListForm:datalist,:growl" oncomplete="handleSubmit(args, 'IngredienteEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="IngredienteEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
