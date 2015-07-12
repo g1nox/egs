@@ -1,112 +1,67 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+    <ui:define name="breadcrumb">
+        <p:menuitem value="Usuarios" url="#" />
+        <p:menuitem value="Listar" url="#" disabled="true"/>
+        
+    </ui:define>
+    <ui:define name="content">
+        <h:outputScript name="jquery/jquery.js" library="primefaces"
+                        target="head" />
 
-    <ui:composition template="/WEB-INF/template.xhtml">
+        
 
 
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListProductoTitle}"></h:outputText>
-        </ui:define>
+        <div class="Container100">
+            <!--  second row -->
+            <div class="ContainerIndent">
 
-        <ui:define name="body">
-            <h:form id="ProductoListForm">
-                <p:panel header="#{bundle.ListProductoTitle}">
-                    <p:dataTable id="datalist" value="#{productoController.items}" var="item"
-                                 selectionMode="single" selection="#{productoController.selected}"
-                                 paginator="true"
-                                 rowKey="#{item.idProducto}"
-                                 rows="10"
-                                 rowsPerPageTemplate="10,20,30,40,50"
-                                 >
+                <div class="Container100 Responsive">
 
-                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+                    <p:panel>
+                        <div class="Container100 Responsive Fs20 hardblue">
+                            <i class="icon-table"></i> Usuarios Activos
+                        </div>
+                        <div class="EmptyBox10" />
+                        <!-- Users List -->
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_idProducto}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idProducto}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_nombre}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nombre}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_unidadCompra}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.unidadCompra}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_unidadVenta}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.unidadVenta}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_stockIdeal}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.stockIdeal}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_stockMaximo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.stockMaximo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_stockMinimo}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.stockMinimo}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_capacidadEnvase}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.capacidadEnvase}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_stockActual}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.stockActual}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_idProveedor}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idProveedor}"/>
-                        </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListProductoTitle_idCategoria}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idCategoria}"/>
-                        </p:column>
-                        <f:facet name="footer">
-                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{productoController.prepareCreate}" update=":ProductoCreateForm" oncomplete="PF('ProductoCreateDialog').show()"/>
-                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ProductoViewForm" oncomplete="PF('ProductoViewDialog').show()" disabled="#{empty productoController.selected}"/>
-                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":ProductoEditForm" oncomplete="PF('ProductoEditDialog').show()" disabled="#{empty productoController.selected}"/>
-                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{productoController.destroy}" update=":growl,datalist" disabled="#{empty productoController.selected}"/>
-                        </f:facet>
-                    </p:dataTable>
-                </p:panel>
-            </h:form>
+                        <h:form id="ProductoListForm">
+                            <p:dataTable id="datatable" var="current" 
+                                         value="#{productoController.items}" paginator="true" rows="5"
+                                         rowsPerPageTemplate="5,10,15" paginatorPosition="bottom"
+                                         selection="#{productoController.selected}" selectionMode="single"
+                                         rowKey="#{current.idProducto}"
+                                         emptyMessage="No se encontraron registros"
+                                         reflow="true"
+                                         >
 
-            <ui:include src="Create.xhtml"/>
-            <ui:include src="Edit.xhtml"/>
-            <ui:include src="View.xhtml"/>
-        </ui:define>
-    </ui:composition>
+                                <p:column sortBy="#{current.nombre}">
+                                    <f:facet name="header">
+                                        <h:outputText value="Producto" />
+                                    </f:facet>
+                                    <h:outputText value="#{current.nombre}" />
+                                    <br />
 
-</html>
+                                </p:column>
+
+                                
+
+                            </p:dataTable>
+                        </h:form>
+
+
+
+                    </p:panel>
+                    <div class="EmptyBox10" />
+                </div>
+
+            </div>
+
+
+        </div>
+    </ui:define>
+
+</ui:composition>

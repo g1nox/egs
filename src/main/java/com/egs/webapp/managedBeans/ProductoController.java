@@ -16,6 +16,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
@@ -55,11 +56,18 @@ public class ProductoController implements Serializable {
         return selected;
     }
 
-    public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ProductoCreated"));
+    public String create() {
+        persist(PersistAction.CREATE,  "El producto se ha creado correctamente");
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+             Flash flash = facesContext.getExternalContext().getFlash();
+             flash.setKeepMessages(true);
+             flash.setRedirect(true);
+             prepareCreate();
+             return goProductoCreate();
         }
+        return null;
     }
 
     public void update() {
@@ -160,6 +168,16 @@ public class ProductoController implements Serializable {
             }
         }
 
+    }
+    
+    public String goProductoCreate(){
+    prepareCreate();
+    return "producto-create";
+    }
+    
+    public String goProductoList(){
+    prepareCreate();
+    return "producto-list";
     }
 
 }

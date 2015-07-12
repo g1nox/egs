@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ProductoFacade extends AbstractFacade<Producto> {
-    @PersistenceContext(unitName = "MyCrudHabanaPU")
+    @PersistenceContext(unitName = "com.egs.webapp_HabanaSalsa_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override

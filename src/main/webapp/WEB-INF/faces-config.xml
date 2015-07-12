@@ -33,8 +33,18 @@
             <redirect/>
         </navigation-case>
     
-    
-    
+         <navigation-case>
+            <from-outcome>producto-create</from-outcome>    
+            <to-view-id>/admin/producto/Create.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>producto-list</from-outcome>    
+            <to-view-id>/admin/producto/List.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+   
     </navigation-rule>
     
     

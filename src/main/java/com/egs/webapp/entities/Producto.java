@@ -44,6 +44,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Producto.findByCapacidadEnvase", query = "SELECT p FROM Producto p WHERE p.capacidadEnvase = :capacidadEnvase"),
     @NamedQuery(name = "Producto.findByStockActual", query = "SELECT p FROM Producto p WHERE p.stockActual = :stockActual")})
 public class Producto implements Serializable {
+    @Size(max = 50)
+    @Column(name = "disponibilidad")
+    private String disponibilidad;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,9 +59,6 @@ public class Producto implements Serializable {
     @Size(max = 50)
     @Column(name = "unidad_compra")
     private String unidadCompra;
-    @Size(max = 50)
-    @Column(name = "unidad_venta")
-    private String unidadVenta;
     @Column(name = "stock_ideal")
     private Integer stockIdeal;
     @Column(name = "stock_maximo")
@@ -109,13 +109,6 @@ public class Producto implements Serializable {
         this.unidadCompra = unidadCompra;
     }
 
-    public String getUnidadVenta() {
-        return unidadVenta;
-    }
-
-    public void setUnidadVenta(String unidadVenta) {
-        this.unidadVenta = unidadVenta;
-    }
 
     public Integer getStockIdeal() {
         return stockIdeal;
@@ -205,6 +198,14 @@ public class Producto implements Serializable {
     @Override
     public String toString() {
         return "com.egs.webapp.entities.Producto[ idProducto=" + idProducto + " ]";
+    }
+
+    public String getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(String disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
     
 }
