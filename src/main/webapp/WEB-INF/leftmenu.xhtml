@@ -44,10 +44,14 @@
                     <p:menuitem id="prod_lnk1" value="Nuevo" icon="icon-plus-circled" 
                                 styleClass="#{fn:startsWith(request.pathInfo,'/admin/producto/Create')?'active':'' } " 
                                 action="#{productoController.goProductoCreate()}" />
-                    
-                      <p:menuitem id="prod_lnk2" value="Nuevo" icon="icon-th-list-1" 
+
+                    <p:menuitem id="prod_lnk2" value="Nuevo" icon="icon-th-list-1" 
                                 styleClass="#{fn:startsWith(request.pathInfo,'/admin/producto/List')?'active':'' } " 
                                 action="#{productoController.goProductoList()}" />
+                    <p:submenu id="ingredientes" label=" Ingredientes" icon="icon-cubes">
+                        <p:menuitem id="ingredientes_lnk1" value="Nuevo" icon="icon-plus-circled" />
+                    </p:submenu>          
+
                 </p:submenu>
 
 

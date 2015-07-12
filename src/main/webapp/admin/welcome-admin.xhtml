@@ -7,9 +7,192 @@
 
     <ui:define name="content">
         <h:outputScript name="jquery/jquery.js" library="primefaces" target="head"/>
-        
-        <h3 class="hardblue TexAlCenter">Empty Page</h3>
-        <span class="TexAlCenter DispBlock Wid100">Use this page to start from scratch and place your custom content.</span>
+
+        <div class="Container100">
+
+            <div class="ContainerIndent">
+                <!-- First container -->
+                <div class="Container25 Responsive">
+                    <div class="ContainerIndent">
+                        <p:panel>
+                            <i class="icon-user Fs50 Wid25 Fleft hardblue" />
+                            <div class="Fs24 Fright MarTop10 leaden Wid70">
+                                <span class="hardblue" style="text-transform: capitalize">#{usuariosController.currentUser.nombre} #{usuariosController.currentUser.apellidoPat}</span>, Bienvenido
+                            </div>
+                            <div class="Fs12 Fright leaden Wid70">
+                                You have <span class="red">3 unread messages </span>
+                            </div>
+                            <div class="Fs12 Fright leaden Wid70">
+                                and <span class="red"> 32 tasks</span> !
+                            </div>
+
+                            <div class="EmptyBox10"></div>
+                            <p:separator></p:separator>
+                            <div class="EmptyBox10"></div>
+                            <div class="Fs16 Fright">
+
+                                <p:commandLink styleClass="DispInlBlock Fleft Fs16 MarRight20"
+                                               style="text-decoration:none!important" actionListener="#">
+                                    <i class="icon-briefcase hardblue" />
+                                    Task (32)
+                                </p:commandLink>
+                                <p:commandLink styleClass="DispInlBlock Fleft Fs16 MarRight20"
+                                               style="text-decoration:none!important" actionListener="#">
+                                    <i class="icon-bell-alt hardblue" />
+                                    Messages (69)
+                                </p:commandLink>
+                                <p:commandLink styleClass="DispInlBlock Fleft Fs16 MarRight20"
+                                               style="text-decoration:none!important" actionListener="#">
+                                    <i class="icon-cog-alt hardblue" />
+                                    Settings
+                                </p:commandLink>
+
+                            </div>
+
+                            <div class="EmptyBox10"></div>
+                            <p:separator></p:separator>
+
+                            <i class="icon-key softgray MarRight10 Fs14 Fright">Your Last
+                                Login - 27.05.2015, 15:08</i>
+
+                            <div class="EmptyBox10"></div>
+                            <p:separator></p:separator>
+                            <div class="EmptyBox20"></div>
+
+                        </p:panel>
+                    </div>
+                </div>
+
+                <div class="Container25 Responsive">
+                    <div class="ContainerIndent">
+                        <p:panel>
+                            <i class="icon-data-science-inv Fs50 Wid25 Fleft orange" />
+                            <div class="Fs24 Fright MarTop10 leaden Wid70">
+                                <span>Visitors Report</span>
+                            </div>
+                            <div class="Fs12 Fright leaden Wid70">
+                                Today <span class="red">2289</span> visitors, <span class="red">15%</span>
+                                higher than
+                            </div>
+                            <div class="Fs12 Fright leaden Wid70">last week</div>
+
+                            <div class="EmptyBox10"></div>
+                            <p:separator></p:separator>
+                            <div class="EmptyBox10"></div>
+
+                            <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">
+                                Overall Visits <br></br> <span class="Fs24 orange">13.760</span>
+                            </div>
+
+                            <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">
+                                Today's Visits <br></br> <span class="Fs24 red">2.280</span>
+                            </div>
+
+                            <div class="Fs12 Fright leaden Wid100 TexAlCenter Responsive">
+                                Online Visitors <br></br> <span class="Fs24 hardblue">134</span>
+                            </div>
+
+                            <div class="EmptyBox10"></div>
+                            <p:separator></p:separator>
+
+                            <p:commandLink
+                                styleClass="DispInlBlock Fright Fs14 MarRight10 orange"
+                                style="text-decoration:none!important" actionListener="#">
+                                <i class="icon-doc-1 orange" />
+                                <span class="orange">Get Full report</span>
+                            </p:commandLink>
+
+                            <div class="EmptyBox20"></div>
+
+
+                        </p:panel>
+                    </div>
+
+                </div>
+
+
+                <div class="Container25 Responsive">
+                    <div class="ContainerIndent">
+                        <p:panel>
+                            <i class="icon-rocket Fs50 Wid25 Fleft red" />
+                            <div class="Fs24 Fright MarTop10 leaden Wid70">
+                                <span>Sales Report</span>
+                            </div>
+                            <div class="Fs18 Fright leaden Wid70">
+                                Totally <span class="red">$ 132.875,45</span>
+                            </div>
+
+                            <div class="EmptyBox10"></div>
+                            <p:separator></p:separator>
+                            <div class="EmptyBox10"></div>
+
+                            <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">
+                                Overall Visits <br></br> <span class="Fs20 red">--</span>
+                            </div>
+
+                            <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">
+                                Today's Visits <br></br> <span class="Fs20 orange">$13.760</span>
+                            </div>
+
+                            <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">
+                                2nd Quarter <br></br> <span class="Fs20 red">$23.567</span>
+                            </div>
+
+                            <div class="Fs12 Fright leaden Wid50 TexAlCenter Responsive">
+                                1st Quarter <br></br> <span class="Fs20 hardblue">$2.370</span>
+                            </div>
+
+                            <div class="EmptyBox10"></div>
+                            <p:separator></p:separator>
+
+                            <p:commandLink
+                                styleClass="DispInlBlock Fright Fs14 MarRight10 orange"
+                                style="text-decoration:none!important" actionListener="#">
+                                <i class="icon-doc-1 orange" />
+                                <span class="orange">Get Full Report</span>
+                            </p:commandLink>
+
+                            <div class="EmptyBox40"></div>
+
+
+                        </p:panel>
+                    </div>
+                </div>
+
+
+                <div class="Container25 Responsive"></div>
+
+            </div>
+            <div class="Container100 BorBotLeaden">
+                <div class="ContainerIndent">
+                    <div class="EmptyBox10"></div>
+                    <div class="Container50 Responsive">
+                        <div class="ContainerIndent">
+                            <p:panel>
+                                <div class="Container100 Responsive Fs20">
+                                    <i class="icon-chart-bar"></i>
+                                    Visits Chart
+                                </div>
+                                <div class="Container100">
+                                    <div class="ContainerIndent">
+<!--                                        <p:chart responsive="true" type="line"
+                                                 model="#"
+                                                 style="width:90%;position:relative;margin-top:10px;height:300px;" />
+                                   --> </div>
+                                </div>
+                                <div class="EmptyBox20"></div>
+                            </p:panel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
     </ui:define>
 
 </ui:composition>
