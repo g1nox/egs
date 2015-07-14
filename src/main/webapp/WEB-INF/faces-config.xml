@@ -39,6 +39,14 @@
             <redirect/>
         </navigation-case>
         
+        
+          <navigation-case>
+            <from-outcome>ingrediente-create</from-outcome>    
+            <to-view-id>/admin/ingrediente/Create.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
+        
         <navigation-case>
             <from-outcome>producto-list</from-outcome>    
             <to-view-id>/admin/producto/List.xhtml</to-view-id>

@@ -178,6 +178,7 @@ public class UsuariosController implements Serializable {
 
         try {
             request.logout();
+            currentUser = null;
             
         } catch (ServletException e) {
             System.out.println("Error al intentar salir");

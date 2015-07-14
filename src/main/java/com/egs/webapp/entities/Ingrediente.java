@@ -37,6 +37,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Ingrediente.findByCantidad", query = "SELECT i FROM Ingrediente i WHERE i.cantidad = :cantidad"),
     @NamedQuery(name = "Ingrediente.findByDisponibilidad", query = "SELECT i FROM Ingrediente i WHERE i.disponibilidad = :disponibilidad")})
 public class Ingrediente implements Serializable {
+    @Column(name = "costo")
+    private BigInteger costo;
+    @Size(max = 50)
+    @Column(name = "unidad")
+    private String unidad;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -136,6 +141,22 @@ public class Ingrediente implements Serializable {
     @Override
     public String toString() {
         return "com.egs.webapp.entities.Ingrediente[ idIngrediente=" + idIngrediente + " ]";
+    }
+
+    public String getUnidad() {
+        return unidad;
+    }
+
+    public void setUnidad(String unidad) {
+        this.unidad = unidad;
+    }
+
+    public BigInteger getCosto() {
+        return costo;
+    }
+
+    public void setCosto(BigInteger costo) {
+        this.costo = costo;
     }
     
 }

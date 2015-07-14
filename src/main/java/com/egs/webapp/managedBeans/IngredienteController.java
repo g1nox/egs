@@ -16,6 +16,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
@@ -55,13 +56,24 @@ public class IngredienteController implements Serializable {
         return selected;
     }
 
-    public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("IngredienteCreated"));
+    public String create() {
+        persist(PersistAction.CREATE,"Ingrediente creado correctamente");
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
+             FacesContext facesContext = FacesContext.getCurrentInstance();
+             Flash flash = facesContext.getExternalContext().getFlash();
+             flash.setKeepMessages(true);
+             flash.setRedirect(true);
+             prepareCreate();
+             return goIngredienteCreate();
         }
+         return null;
     }
-
+    
+    public String goIngredienteCreate(){
+    prepareCreate();
+    return "ingrediente-create";
+    }
     public void update() {
         persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("IngredienteUpdated"));
     }
