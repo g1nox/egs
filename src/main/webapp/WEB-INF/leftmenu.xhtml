@@ -37,7 +37,12 @@
                 </p:submenu>
 
                 <p:submenu id="ventas" label=" Ventas" icon="icon-dollar">
-                    <p:menuitem id="ventas_lnk1" value="Nuevo" icon="icon-user-add" />
+                    <p:menuitem id="ventas_lnk1" value="Nuevo" icon="icon-user-add"
+                                  styleClass="#{fn:startsWith(request.pathInfo,'/admin/ventas/Create')?'active':'' } " 
+                                  action="#{ventaController.goVentaCreate()}"/>
+                     <p:menuitem id="ventas_lnk2" value="Nuevo" icon="icon-user-add"
+                                  styleClass="#{fn:startsWith(request.pathInfo,'/admin/ventas/List')?'active':'' } " 
+                                action="#{productoController.goProductoCreate()}"/>
                 </p:submenu>
 
                 <p:submenu id="productos" label=" Productos" icon="icon-food">

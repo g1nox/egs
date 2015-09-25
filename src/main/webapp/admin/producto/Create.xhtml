@@ -18,101 +18,108 @@
 
                 <div class="Container100 Responsive">
                     <h:form id="ProductoCreateForm">
-                            
-                              <p:panelGrid columns="3" layout="grid" style="border:0px none;background:none"> 
 
-                    
-                    <p:inputText value="#{productoController.selected.nombre}"
+                        <p:panelGrid columns="3" layout="grid" style="border:0px none;background:none"> 
+
+
+                            <p:inputText value="#{productoController.selected.nombre}"
+                                         styleClass="Wid90"
+                                         required="true"
+                                         requiredMessage="Ingrese Usuario!"
+                                         placeholder="Nombre"/>
+                            <p:inputText value="#{productoController.selected.unidadCompra}"
+                                         required="true"
+                                         requiredMessage="Ingrese Nombre!"
+                                         styleClass="Wid90"
+                                         placeholder="Unidad de Compra"/>
+
+                            <p:inputText value="#{productoController.selected.disponibilidad}"
+                                         required="true"
+                                         requiredMessage="Ingrese Apellido Paterno"
+                                         styleClass="Wid90"
+                                         placeholder="Unidad de Venta"/>
+
+                            <p:inputText value="#{productoController.selected.stockIdeal}"
+                                         required="true"
+                                         requiredMessage="Ingrese Apellido Materno!"
+                                         styleClass="Wid90"
+                                         placeholder="Stock Ideal"/>
+
+                            <p:inputText value="#{productoController.selected.stockMaximo}"
+                                         required="true"
+                                         requiredMessage="Ingrese Correo!"
+                                         styleClass="Wid90"
+                                         placeholder="Stock Maximo"/>
+
+                            <p:inputText value="#{productoController.selected.stockMinimo}"
+                                         required="true"
+                                         requiredMessage="Ingrese Correo!"
+                                         styleClass="Wid90"
+                                         placeholder="Stock Minimo"/>
+                            <p:inputText value="#{productoController.selected.capacidadEnvase}"
+                                         required="true"
+                                         requiredMessage="Ingrese Correo!"
+                                         styleClass="Wid90"
+                                         placeholder="Capacidad Envase"/>
+                            <p:inputText value="#{productoController.selected.stockActual}"
+                                         required="true"
+                                         requiredMessage="Ingrese Correo!"
+                                         styleClass="Wid90"
+                                         placeholder="Stock Actual"/>
+
+
+                            <p:selectOneMenu id="proveedor" 
+                                             style="width: 90%"   
                                              styleClass="Wid90"
-                                             required="true"
-                                             requiredMessage="Ingrese Usuario!"
-                                             placeholder="Nombre"/>
-                                <p:inputText value="#{productoController.selected.unidadCompra}"
-                                             required="true"
-                                             requiredMessage="Ingrese Nombre!"
+                                             value="#{proveedorController.selected}" 
+                                             converter="proveedorConverter"
+                                             filter="true" filterMatchMode="startsWith"
+                                             effect="blind"
+                                             >
+
+                                <f:selectItem itemLabel="Seleccione Proveedor" />
+                                <f:selectItems value="#{proveedorController.items}"
+                                               var="item"
+                                               itemValue="#{item}"
+                                               itemLabel="#{item.nombre.toString()}"
+
+                                               />  
+                            </p:selectOneMenu>
+
+
+                            <p:selectOneMenu id="categoria" 
+                                             style="width: 90%"   
                                              styleClass="Wid90"
-                                             placeholder="Unidad de Compra"/>
+                                             value="#{categoriaController.selected}" 
+                                             converter="proveedorConverter"
+                                             filter="true" filterMatchMode="startsWith"
+                                             effect="blind"
+                                             >
 
-                                <p:inputText value="#{productoController.selected.disponibilidad}"
-                                             required="true"
-                                             requiredMessage="Ingrese Apellido Paterno"
-                                             styleClass="Wid90"
-                                             placeholder="Unidad de Venta"/>
+                                <f:selectItem itemLabel="Seleccione Proveedor" />
+                                <f:selectItems value="#{proveedorController.items}"
+                                               var="item"
+                                               itemValue="#{item}"
+                                               itemLabel="#{item.nombre.toString()}"
 
-                                <p:inputText value="#{productoController.selected.stockIdeal}"
-                                             required="true"
-                                             requiredMessage="Ingrese Apellido Materno!"
-                                             styleClass="Wid90"
-                                             placeholder="Stock Ideal"/>
-
-                                <p:inputText value="#{productoController.selected.stockMaximo}"
-                                             required="true"
-                                             requiredMessage="Ingrese Correo!"
-                                             styleClass="Wid90"
-                                             placeholder="Stock Maximo"/>
-
-                                <p:inputText value="#{productoController.selected.stockMinimo}"
-                                             required="true"
-                                             requiredMessage="Ingrese Correo!"
-                                             styleClass="Wid90"
-                                             placeholder="Stock Minimo"/>
-                                <p:inputText value="#{productoController.selected.capacidadEnvase}"
-                                             required="true"
-                                             requiredMessage="Ingrese Correo!"
-                                             styleClass="Wid90"
-                                             placeholder="Capacidad Envase"/>
-                                <p:inputText value="#{productoController.selected.stockActual}"
-                                             required="true"
-                                             requiredMessage="Ingrese Correo!"
-                                             styleClass="Wid90"
-                                             placeholder="Stock Actual"/>
-                              
-        
-                                <p:selectOneMenu id="proveedor" 
-                                                 style="width: 90%"   
-                                                 styleClass="Wid90"
-                                                 value="#{proveedorController.selected}" 
-                                                 converter="proveedorConverter"
-                                                 filter="true" filterMatchMode="startsWith"
-                                                 effect="blind"
-                                                 >
-
-                                    <f:selectItem itemLabel="Seleccione Proveedor" />
-                                    <f:selectItems value="#{proveedorController.items}"
-                                                   var="item"
-                                                   itemValue="#{item}"
-                                                   itemLabel="#{item.nombre.toString()}"
-
-                                                   />  
-                                    </p:selectOneMenu>
-                                
-                                
-                                       <p:selectOneMenu id="categoria" 
-                                                 style="width: 90%"   
-                                                 styleClass="Wid90"
-                                                 value="#{categoriaController.selected}" 
-                                                 converter="proveedorConverter"
-                                                 filter="true" filterMatchMode="startsWith"
-                                                 effect="blind"
-                                                 >
-
-                                    <f:selectItem itemLabel="Seleccione Proveedor" />
-                                    <f:selectItems value="#{proveedorController.items}"
-                                                   var="item"
-                                                   itemValue="#{item}"
-                                                   itemLabel="#{item.nombre.toString()}"
-
-                                                   />  
-                                    </p:selectOneMenu>
-                    
-                              </p:panelGrid>
-                        <p:panelGrid columns="3" layout="grid" style="border:0px none;background:none">
-                            
-                            <p:commandButton update="ProductoCreateForm" value="Aceptar" action="#{productoController.create()}"/>
-                          
-                            
+                                               />  
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Basic :"/>
+                            <p:selectBooleanCheckbox  valueChangeListener="#{productoController.checkbox}">
+                             </p:selectBooleanCheckbox>
                         </p:panelGrid>
- 
+                        
+                        <p:panelGrid  id="grilla" rendered="#{productoController.checkbox == true}" columns="3" layout="grid" style="border:0px none;background:none">
+                            <h3>Hello world</h3>
+                        </p:panelGrid>
+                        
+                        <p:panelGrid columns="3" layout="grid" style="border:0px none;background:none">
+
+                            <p:commandButton update="ProductoCreateForm" value="Aceptar" action="#{productoController.create()}"/>
+
+
+                        </p:panelGrid>
+
                     </h:form>
                     <div class="EmptyBox10" />
                 </div>

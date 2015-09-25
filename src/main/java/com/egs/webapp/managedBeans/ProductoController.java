@@ -19,6 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
 
 @Named("productoController")
 @SessionScoped
@@ -28,10 +29,22 @@ public class ProductoController implements Serializable {
     private com.egs.webapp.sessionBeans.ProductoFacade ejbFacade;
     private List<Producto> items = null;
     private Producto selected;
-
+    
+    // utility attributes
+    private boolean checkbox; 
+    
+    
     public ProductoController() {
     }
 
+    public boolean isCheckbox() {
+        return checkbox;
+    }
+
+    public void setCheckbox(boolean checkbox) {
+        this.checkbox = checkbox;
+    }
+    
     public Producto getSelected() {
         return selected;
     }
@@ -52,6 +65,7 @@ public class ProductoController implements Serializable {
 
     public Producto prepareCreate() {
         selected = new Producto();
+//        currentDetalle.init();
         initializeEmbeddableKey();
         return selected;
     }

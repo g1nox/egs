@@ -46,6 +46,12 @@
             <redirect/>
         </navigation-case>
         
+        <navigation-case>
+            <from-outcome>venta-create</from-outcome>    
+            <to-view-id>/admin/ventas/Create.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        
         
         <navigation-case>
             <from-outcome>producto-list</from-outcome>    
