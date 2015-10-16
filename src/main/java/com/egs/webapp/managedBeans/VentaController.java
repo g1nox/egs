@@ -6,10 +6,12 @@
 
 package com.egs.webapp.managedBeans;
 
+import com.egs.webapp.entities.Detalleventa;
 import com.egs.webapp.entities.Venta;
 import com.egs.webapp.sessionBeans.VentaFacade;
 import com.egs.webapp.util.JsfUtil;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -44,6 +46,8 @@ public class VentaController implements Serializable {
     
     @Inject
     private DetalleController currentDetalle;
+    @Inject
+    private UsuariosController contextUsuario;
     public VentaController() {
     }
 
@@ -73,7 +77,7 @@ public class VentaController implements Serializable {
         persist(JsfUtil.PersistAction.CREATE,  "La venta se ha concretado correctamente");
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
-            FacesContext facesContext = FacesContext.getCurrentInstance();
+             FacesContext facesContext = FacesContext.getCurrentInstance();
              Flash flash = facesContext.getExternalContext().getFlash();
              flash.setKeepMessages(true);
              flash.setRedirect(true);
@@ -99,12 +103,32 @@ public class VentaController implements Serializable {
         if (selected != null) {
            
             try {
-                if (persistAction != JsfUtil.PersistAction.DELETE) {
-                    getEjbFacade().edit(selected);
-                } else {
-                    getEjbFacade().remove(selected);
-                }
-                JsfUtil.addSuccessMessage(successMessage);
+//                if (persistAction != JsfUtil.PersistAction.DELETE) {
+                    
+                    selected.setFecha(null);
+                    selected.setHora(null);
+                    selected.setIdUsuario(contextUsuario.getCurrentUser());
+                   int contadorTotal = 0;
+                   selected.setTotal(BigInteger.ZERO);
+                   for (Detalleventa dv: currentDetalle.getCurrentItems()){
+                   
+                  //BigInteger totalParcial = BigInteger.valueOf(dv.getCantArt())* BigInteger.valueOf(dv.getIdProducto().getStockMaximo());
+                  // contadorTotal = ;
+                   
+                   }
+                    
+                    selected.setTotal(BigInteger.ZERO);
+//                    getEjbFacade().edit(selected);
+//                } else {
+//                    getEjbFacade().remove(selected);
+//                }
+//                JsfUtil.addSuccessMessage(successMessage);
+                
+                
+                
+                
+                
+                
             } catch (EJBException ex) {
                 String msg = "";
                 Throwable cause = ex.getCause();

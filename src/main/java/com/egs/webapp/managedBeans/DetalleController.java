@@ -12,12 +12,14 @@ import com.egs.webapp.util.JsfUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
@@ -67,13 +69,17 @@ public class DetalleController implements Serializable {
     }
     
      public Detalleventa prepareCreate() {
-        selected = new Detalleventa();
+  //      selected = new Detalleventa();
         return selected;
     }
     
      public void init (){
+         if (currentDetalleVenta==null){
          currentDetalleVenta = new Detalleventa();
+         }
+         if (currentItems ==null){
          currentItems = new ArrayList <Detalleventa>();
+         }
      }
      public String reinit (){
          
@@ -82,22 +88,18 @@ public class DetalleController implements Serializable {
      }
      
      public void addShoppingCart() {
-//        if(currentItems.contains(currentDetalleVenta)) {
-//            FacesMessage msg = new FacesMessage("Duplicado", "This item has already been added");
-//            FacesContext.getCurrentInstance().addMessage(null, msg);
-//        } 
-//        else {
-//            currentItems.add(currentDetalleVenta);
-//            currentDetalleVenta = new Detalleventa();
-//        }
-          currentItems.add(currentDetalleVenta);
-          System.out.println(""+currentItems.contains(currentDetalleVenta));
+     
+          if (currentItems.contains(currentDetalleVenta)){
           
-         
+                FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "El producto ya fue agregado anteriormente!", "");
+                FacesContext.getCurrentInstance().addMessage(null, msg);
           
-          currentDetalleVenta = new Detalleventa();
-         System.out.println("contiene lista?"+currentDetalleVenta.toString()+currentItems.contains(currentDetalleVenta));
-         
+          }else{
+              
+                currentItems.add(currentDetalleVenta);
+                currentDetalleVenta = new Detalleventa();
+              
+          }
     }
      
      
@@ -219,12 +221,12 @@ public class DetalleController implements Serializable {
     
     
     public String goDetalleCreate(){
-    prepareCreate();
+   // prepareCreate();
     return "venta-create";
     }
     
     public String goDetalleList(){
-    prepareCreate();
+    //prepareCreate();
     return "venta-list";
     }
     

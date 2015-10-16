@@ -123,10 +123,16 @@ public class Detalleventa implements Serializable {
             return false;
         }
         Detalleventa other = (Detalleventa) object;
-        if ((this.idDetalle == null && other.idDetalle != null) || (this.idDetalle != null && !this.idDetalle.equals(other.idDetalle))) {
-            return false;
-        }
+//        if ((this.idDetalle == null && other.idDetalle != null) || (this.idDetalle != null && !this.idDetalle.equals(other.idDetalle))) {
+//            return false;
+//        }
+        
+        if (this.idProducto.getIdProducto().equals(other.idProducto.getIdProducto())){
         return true;
+        
+        }
+        
+        return false;
     }
 
     @Override

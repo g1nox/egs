@@ -56,9 +56,8 @@
                                 </p:panelGrid>
 
                                 <p:commandButton id="btn_reset" value="Reset" type="reset"/>
-                                <p:commandButton id="btn_add" value="Add" update="outItems @parent" action="#{detalleController.addShoppingCart()}" >
-                                    <p:collector value="#{detalleController.currentDetalleVenta}" addTo="#{detalleController.currentItems}" unique="true"/>
-                                </p:commandButton>
+                                <p:commandButton id="btn_add" value="Add" update="outItems" action="#{detalleController.addShoppingCart()}" >
+                                    </p:commandButton>
 
                             </p:panel>
                         </div>
@@ -75,24 +74,37 @@
 
 
                                 <p:outputPanel id="outItems">
-                                    <p:dataTable value="#{detalleController.currentItems}" var="currentItems" id="currentItemsTable">
+                                    <p:dataTable value="#{detalleController.currentItems}" var="currentItems" id="currentItemsTable" editable="true" editMode="cell">
 
                                         <p:column headerText="Producto">
                                             <h:outputText value="#{currentItems.idProducto.nombre}" />
                                         </p:column>
 
                                         <p:column headerText="Cantidad">
-                                            <h:outputText value="#{currentItems.cantArt}" />
+                                            <p:cellEditor>  
+                                                <f:facet name="output"><h:outputText value="#{currentItems.cantArt}"/></f:facet>
+                                                <f:facet name="input"><p:inputText value="#{currentItems.cantArt}" /></f:facet>
+                                       
+                                            </p:cellEditor>
+                                        
                                         </p:column>
 
 
 
                                     </p:dataTable>
+                                    
+                                    <br/>
+                                
+                                
                                 </p:outputPanel>
-
+                                
 
 
                             </p:panel>
+                            <br/>
+                            <p:commandButton value="Terminar Venta" action=""/>
+                                    
+                                    <br/>
                         </div>
                     </div>
 
